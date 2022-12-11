@@ -18,7 +18,7 @@ function App() {
       .then((data) => ip = data.Answer[0].data)
     }
     if (value !== 'error') {
-      await fetch(`http://ipwho.is/${ip}`)
+      await fetch(`https://ipwho.is/${ip}`)
         .then((response) => response.json())
         .then((data) => setAddress(data));
     }
