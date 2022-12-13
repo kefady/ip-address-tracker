@@ -12,15 +12,19 @@ function App() {
   const getAddress = async () => {
     const value = ValidateIPaddress(ipAddress)
     var ip = ipAddress;
-    if (value === 'domain') {
-      await fetch(`https://dns.google/resolve?name=${ipAddress}`)
-      .then((response) => response.json())
-      .then((data) => ip = data.Answer[0].data)
-    }
-    if (value !== 'error') {
-      await fetch(`https://ipwho.is/${ip}`)
+    try {
+      if (value === 'domain') {
+        await fetch(`https://dns.google/resolve?name=${ipAddress}`)
         .then((response) => response.json())
-        .then((data) => setAddress(data));
+        .then((data) => ip = data.Answer[0].data)
+      }
+      if (value !== 'error') {
+        await fetch(`https://ipwho.is/${ip}`)
+          .then((response) => response.json())
+          .then((data) => setAddress(data));
+      }
+    } catch(error) {
+      alert('You are put invalid IP address or domain!');
     }
     setIpAddress('')
   }
@@ -32,7 +36,7 @@ function App() {
   }
 
   useEffect(() => {
-    getAddress()
+    getAddress();
   }, [])
 
   function ValidateIPaddress(ipaddress) {
