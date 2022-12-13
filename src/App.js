@@ -33,7 +33,7 @@ function App() {
 
   useEffect(() => {
     getAddress()
-  }, [])
+  })
 
   function ValidateIPaddress(ipaddress) {
     if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ipaddress) || ipaddress === "") {
@@ -76,7 +76,7 @@ function App() {
               </div>
               <div className="flex flex-col lg:border-r-2 border-zinc-500 pr-4">
                 <h2 className="uppercase text-md text-zinc-500 font-bold tracking-wider mb-2">location</h2>
-                <span className="text-2xl font-medium">{address.city}, {address.region}, {address.country}</span>
+                <span className="text-2xl font-medium">{address.city}, {address.country}</span>
               </div>
               <div className="flex flex-col md:border-r-2 border-zinc-500 pr-4">
                 <h2 className="uppercase text-md text-zinc-500 font-bold tracking-wider mb-2">timezone</h2>
