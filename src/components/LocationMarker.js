@@ -1,14 +1,15 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react"
 import { useEffect } from "react"
 import { Marker, Popup, useMap } from "react-leaflet"
 import MarkerIcon from "./MarkerIcon"
 
-function LocationMarker({address}) {
-  const position = [address.latitude, address.longitude]
-	const map = useMap()
-	useEffect(() => {
-		map.flyTo(position, 15)
-	})
+function LocationMarker({ address }) {
+  const position = [address.latitude, address.longitude];
+  const map = useMap();
+  useEffect(() => {
+    map.flyTo(position, 15);
+  }, [address])
 
   return position === null ? null : (
     <Marker icon={MarkerIcon} position={position}>

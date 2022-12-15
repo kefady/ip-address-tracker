@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react"
 import { useState, useEffect } from "react"
 import 'leaflet/dist/leaflet.css'
@@ -10,7 +11,7 @@ function App() {
   const [ipAddress, setIpAddress] = useState('')
 
   const getAddress = async () => {
-    const value = ValidateIPaddress(ipAddress)
+    const value = validateIPaddress(ipAddress)
     var ip = ipAddress;
     try {
       if (value === 'domain') {
@@ -39,7 +40,7 @@ function App() {
     getAddress();
   }, [])
 
-  function ValidateIPaddress(ipaddress) {
+  function validateIPaddress(ipaddress) {
     if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ipaddress) || ipaddress === "") {
       return ('ip')
     }
